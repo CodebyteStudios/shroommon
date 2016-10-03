@@ -4,9 +4,9 @@ document.body.appendChild(renderer.view);
 var stage = new PIXI.Container();
 
 var bunny = new PIXI.Sprite(PIXI.Texture.fromImage('sprite.png'));
-    bunny.anchor.x = 0;
+	bunny.anchor.x = 0;
 	bunny.anchor.y = 0;
-    bunny.position.x = window.innerWidth / 2;
+	bunny.position.x = window.innerWidth / 2;
 	bunny.position.y = window.innerHeight / 2;
 	
 var bunnyHeight = renderer.height / 20;
@@ -17,7 +17,7 @@ stage.addChild(bunny);
 animate();
 
 function animate() {
-    requestAnimationFrame(animate);
+	requestAnimationFrame(animate);
 	renderer.render(stage);
 }
 
