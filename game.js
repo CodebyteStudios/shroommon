@@ -158,43 +158,44 @@ Game.game = new Phaser.Game(Game.width, Game.height, Phaser.AUTO, 'game', {
 	},
 	preload: function () {},
 	create: function () {
-	
-		var playerRenderSeed = Math.random();
-	
-		Game.playerTextures = {
-			idle: renderPixelStringBitmapData({
-				game: Game.game,
-				scale: GAME_SCALE,
-				seed: playerRenderSeed,
-				pixelStringMap: PixelStringMaps.playerIdle,
-				colors: {
-					background: Colors.background,
-					outline: Colors.outline,
-					perlin: Colors.playerCap
-				},
-				noise: {
-					offset: { x: 20, y: 10 },
-					threshold: 0.5,
-					swap: false
-				}
-			}),
-			running: renderPixelStringBitmapData({
-				game: Game.game,
-				scale: GAME_SCALE,
-				seed: playerRenderSeed,
-				pixelStringMap: PixelStringMaps.playerRunning,
-				colors: {
-					background: Colors.background,
-					outline: Colors.outline,
-					perlin: Colors.playerCap
-				},
-				noise: {
-					offset: { x: 20, y: 10 },
-					threshold: 0.5,
-					swap: false
-				}
-			})
-		};
+		
+		function Player () {
+			this.playerRenderSeed = Math.random();
+			this.playerTextures = {
+				idle: renderPixelStringBitmapData({
+					game: Game.game,
+					scale: GAME_SCALE,
+					seed: this.playerRenderSeed,
+					pixelStringMap: PixelStringMaps.playerIdle,
+					colors: {
+						background: Colors.background,
+						outline: Colors.outline,
+						perlin: Colors.playerCap
+					},
+					noise: {
+						offset: { x: 20, y: 10 },
+						threshold: 0.5,
+						swap: false
+					}
+				}),
+				running: renderPixelStringBitmapData({
+					game: Game.game,
+					scale: GAME_SCALE,
+					seed: this.playerRenderSeed,
+					pixelStringMap: PixelStringMaps.playerRunning,
+					colors: {
+						background: Colors.background,
+						outline: Colors.outline,
+						perlin: Colors.playerCap
+					},
+					noise: {
+						offset: { x: 20, y: 10 },
+						threshold: 0.5,
+						swap: false
+					}
+				})
+			};
+		}
 	
 		Game.game.stage.backgroundColor = '#2d2d2d';
 	
@@ -202,7 +203,7 @@ Game.game = new Phaser.Game(Game.width, Game.height, Phaser.AUTO, 'game', {
 	
 		Game.game.physics.arcade.gravity.y = 300 * GAME_SCALE;
 
-		Game.player = Game.game.add.sprite(Game.width / 2, Game.height / 2, Game.playerTextures.idle);
+		Game.player = Game.game.add.sprite(Game.width / 2, Game.height / 2, Player.prototype.playerTextures.idle);
 		Game.player.anchor.set(0.5, 0.5);
 		
 		Game.game.physics.enable([Game.player], Phaser.Physics.ARCADE);
