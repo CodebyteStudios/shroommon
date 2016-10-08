@@ -7,7 +7,7 @@ STATE.SCORE                   = 0;
 STATE.KILLS                   = 0;
 
 STATE.DEBUG.BODIES            = false;
-STATE.DEBUG.STATS             = true;
+STATE.DEBUG.STATS             = false;
 
 STATE.ENEMY.MAX_TEXTURES      = 20;
 STATE.ENEMY.STEP_SIZE         = 2;

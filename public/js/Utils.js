@@ -3,8 +3,6 @@ window.Utils = {
 	
   	noise.seed(options.seed ? options.seed : 0);
   	
-  	console.log(options.pixelString[0]);
-  	
   	var bitmapData = new Phaser.BitmapData(options.game, '', options.pixelString[0].split(' ').length, options.pixelString.length, true);
   	Phaser.Canvas.setSmoothingEnabled(bitmapData.ctx, false);
   	
