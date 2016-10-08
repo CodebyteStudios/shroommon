@@ -25,12 +25,14 @@ Enemy.prototype.update = function (player) {
   }
   
   if (this.head.y <= 0) {
-    // game over
     this.die();
+    console.log(this.head.y);
+    // BUG: When respawning, sometimes you randomly die
+    this._game.state.start('Death');
   }
   
   if (this._game.physics.arcade.overlap(player.sprite, this.head) && player.sprite.bottom < this.head.y + 10) {
-    if (player.smashing == true) {
+    if (player.smashing === true) {
       this.die();
     }
     else {
