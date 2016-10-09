@@ -1,6 +1,12 @@
 function StartScreen () {}
 
 StartScreen.prototype.preload = function () {
+  this.game.load.crossOrigin = 'anonymous';
+  this.game.load.bitmapFont(
+    'pixelated',
+    'https://cdn.hyperdev.com/us-east-1%3Aedca1fa4-beaf-4873-bac2-bd5488bd55f1%2Fpixelated.png',
+    'https://cdn.hyperdev.com/us-east-1%3Aedca1fa4-beaf-4873-bac2-bd5488bd55f1%2Fpixelated.fnt'
+  );
   this.game.load.audio('music', 'https://cdn.hyperdev.com/us-east-1%3Aedca1fa4-beaf-4873-bac2-bd5488bd55f1%2Fsong.wav');
 }
 

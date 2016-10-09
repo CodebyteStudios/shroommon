@@ -21,6 +21,14 @@ DeathScreen.prototype.create = function () {
   }, this);
   
   this._hideTimer = this.game.time.now + 500;
+  
+  this.score = this.game.add.bitmapText(
+    10,
+    20,
+    'pixelated',
+    'SCORE: ' + GameState.get('SCORE'),
+    GameState.get('SCALE') * 20
+  );
 }
 
 DeathScreen.prototype.update = function () {

@@ -9,7 +9,6 @@ GameScreen.prototype = {
     this.game.load.audio('walk', 'https://cdn.hyperdev.com/us-east-1%3Aedca1fa4-beaf-4873-bac2-bd5488bd55f1%2Fwalk.wav');
     this.game.load.audio('jump', 'https://cdn.hyperdev.com/us-east-1%3Aedca1fa4-beaf-4873-bac2-bd5488bd55f1%2Fjump.wav');
     this.game.load.audio('smash', 'https://cdn.hyperdev.com/us-east-1%3Aedca1fa4-beaf-4873-bac2-bd5488bd55f1%2Fsmash.wav');
-    this.game.load.audio('music', 'https://cdn.hyperdev.com/us-east-1%3Aedca1fa4-beaf-4873-bac2-bd5488bd55f1%2Fsong.wav');
   },
   create: function () {
   	
@@ -41,6 +40,11 @@ GameScreen.prototype = {
       this.game.sound.mute = (this.game.sound.mute) ? false : true;
     }, this);
 
+    this.score = this.game.add.bitmapText(
+      10, 10, 'pixelated',
+      'SCORE: 0',
+      GameState.get('SCALE') * 10
+    );
   },
   update: function () {
     
@@ -59,12 +63,14 @@ GameScreen.prototype = {
       
       if (result == 'GAMEOVER') {
          return true;
-      } else if (result == 'KILLED') {
+      }
+      else if (result == 'KILLED') {
         GameState.set('KILLS', GameState.get('KILLS') + 1);
         GameState.set('SCORE', GameState.get('SCORE') + (-enemy.body.height));
         GameState.increaseDifficulty();
         enemy.reset();
-      } else if (result == 'BOUNCE') {
+      }
+      else if (result == 'BOUNCE') {
         self._player.bounce();
       }
     });
@@ -75,6 +81,8 @@ GameScreen.prototype = {
       });
       self.game.state.start('Death');
     }
+    
+    this.score.text = GameState.get('SCORE');
   },
   render: function () {
     
@@ -85,7 +93,8 @@ GameScreen.prototype = {
       self._enemies.forEach(function (enemy) {
         self.game.debug.body(enemy.head);
       });
-    } else if (GameState.get('DEBUG.STATS')) {
+    }
+    else if (GameState.get('DEBUG.STATS')) { 
       self.game.debug.renderShadow = false;
       self.game.debug.text('STATE.SCORE: ' + GameState.get('SCORE'), 10, 20, 'black', 'bold 12px Arial');
       self.game.debug.text('STATE.KILLS: ' + GameState.get('KILLS'), 10, 40, 'black', 'bold 12px Arial');
