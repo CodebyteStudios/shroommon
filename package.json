@@ -1,27 +1,27 @@
 {
-  "name": "shroommon",
-  "version": "1.0.0",
-  "description": "Bounce to win! Built for GBJAM 5",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "express": "^4.12.4"
-  },
-  "engines": {
-    "node": "4.4.3"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/CodebyteStudios/shroommon"
-  },
-  "keywords": [
-    "node",
-    "hyperdev",
-    "express",
-    "shroommon",
-    "gbjam5"
-  ],
-  "license": "MIT"
+	"name": "shroommon",
+	"version": "1.0.0",
+	"description": "Bounce to win! Built for GBJAM 5",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"dependencies": {
+		"express": "4.4.3"
+	},
+	"engines": {
+		"node": "4.4.3"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/CodebyteStudios/shroommon"
+	},
+	"keywords": [
+		"node",
+		"hyperdev",
+		"express",
+		"shroommon",
+		"gbjam5"
+	],
+	"license": "MIT"
 }
