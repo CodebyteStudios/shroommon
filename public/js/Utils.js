@@ -5,7 +5,7 @@ window.Utils = {
   	
   	var bitmapData = new Phaser.BitmapData(options.game, '', options.pixelString[0].split(' ').length, options.pixelString.length, true);
   	Phaser.Canvas.setSmoothingEnabled(bitmapData.ctx, false);
-  	
+
   	options.pixelString.forEach(function (row, y) {
   		row.split(' ').forEach(function (pixel, x) {
   			
@@ -37,5 +37,16 @@ window.Utils = {
   	bitmapData.destroy();
   	
   	return bitmapDataScaled;
+  },
+  textToPixelStringBitmapData: function (str) {
+    
+    var lines = str.split("\n");
+    
+    var bitmapData = new Phaser.BitmapData(options.game, '', options.pixelString[0].split(' ').length, options.pixelString.length, true);
+  	Phaser.Canvas.setSmoothingEnabled(bitmapData.ctx, false);
+    
+    str.forEach(function (char) {
+      
+    });
   }
 };

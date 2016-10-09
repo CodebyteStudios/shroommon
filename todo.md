@@ -1,5 +1,13 @@
 [x] - basic gameplay
-[ ] - finalize game difficulty (THIS HAS BEEN FINALIZED BY JONATHAN - WAITING ON CAMERON)
+[ ] - finalize game difficulty
 [x] - game over and start screens
+  [ ] - 
+[x] - sounds
+  [x] - Jumping
+  [x] - Smashing
+[ ] - settings shortcuts
+  [x] - Pause Gameplay (P)
+  [x] - Mute Audio (M)
+  [ ] - Show  mute or pause icon as semi-transparent on press to give user visual feedback
 [ ] - google cloud function for leaderboards, use firebase for storage
 [x] - google analytics
