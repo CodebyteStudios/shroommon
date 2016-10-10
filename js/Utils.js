@@ -38,15 +38,9 @@ window.Utils = {
   	
   	return bitmapDataScaled;
   },
-  textToPixelStringBitmapData: function (str) {
-    
-    var lines = str.split("\n");
-    
-    var bitmapData = new Phaser.BitmapData(options.game, '', options.pixelString[0].split(' ').length, options.pixelString.length, true);
-  	Phaser.Canvas.setSmoothingEnabled(bitmapData.ctx, false);
-    
-    str.forEach(function (char) {
-      
-    });
+  updateMute: function (game, val) {
+    if (window.localStorage.muted === undefined) window.localStorage.muted = false;
+    if (typeof val === 'boolean') window.localStorage.muted = val;
+    game.sound.mute = JSON.parse(window.localStorage.muted);
   }
 };

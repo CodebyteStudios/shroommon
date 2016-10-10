@@ -4,10 +4,10 @@ StartScreen.prototype.preload = function () {
   this.game.load.crossOrigin = 'anonymous';
   this.game.load.bitmapFont(
     'pixelated',
-    'https://cdn.hyperdev.com/us-east-1%3Aedca1fa4-beaf-4873-bac2-bd5488bd55f1%2Fpixelated.png',
-    'https://cdn.hyperdev.com/us-east-1%3Aedca1fa4-beaf-4873-bac2-bd5488bd55f1%2Fpixelated.fnt'
+    'assets/pixelated.png',
+    'assets/pixelated.fnt'
   );
-  this.game.load.audio('music', 'https://cdn.hyperdev.com/us-east-1%3Aedca1fa4-beaf-4873-bac2-bd5488bd55f1%2Fsong.wav');
+  this.game.load.audio('music', 'assets/song.wav');
 }
 
 StartScreen.prototype.create = function () {
@@ -16,6 +16,10 @@ StartScreen.prototype.create = function () {
   bgMusic.loopFull(0.8);
   bgMusic.volume = 1;
   bgMusic.play();
+  
+  this.game.input.keyboard.addKey(Phaser.Keyboard.M).onDown.add(function() {
+    Utils.updateMute(this.game, !this.game.sound.mute);
+  }, this);
   
   this.game.stage.backgroundColor = 'rgba(' + GameState.get('COLORS.BACKGROUND').join(', ') + ')';
   
@@ -30,7 +34,7 @@ StartScreen.prototype.create = function () {
   
   this.pressSpaceToPlay = this.game.add.bitmapText(
     this.game.world.centerX,
-    this.game.world.centerY + 120,
+    this.game.world.centerY + 60,
     'pixelated',
     'PRESS SPACE TO PLAY',
     GameState.get('SCALE') * 10

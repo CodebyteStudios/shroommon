@@ -26,8 +26,8 @@ window.GameState = {
 
 // the difficulty algorithm
 GameState.increaseDifficulty = function () {
-  GameState.set('ENEMY.STEP_DELAY', GameState.get('ENEMY.STEP_DELAY') - 1);
-  GameState.set('ENEMY.SPAWN_DELAY', GameState.get('ENEMY.SPAWN_DELAY') - 10);
+  GameState.set('ENEMY.STEP_DELAY', GameState.get('ENEMY.STEP_DELAY') - 0.5);
+  GameState.set('ENEMY.SPAWN_DELAY', GameState.get('ENEMY.SPAWN_DELAY') - 5);
   if (GameState.get('ENEMY.STEP_DELAY') < 5) GameState.set('ENEMY.STEP_DELAY', 5);
   if (GameState.get('ENEMY.SPAWN_DELAY') < 0) GameState.set('ENEMY.SPAWN_DELAY', 0);
 };
@@ -40,7 +40,7 @@ GameState.default('SCALE', 3);
   ['SCORE', 0],
   ['KILLS', 0],
   ['DEBUG.BODIES', false],
-  ['DEBUG.STATS', true],
+  ['DEBUG.STATS', false],
   ['ENEMY.MAX_TEXTURES', 20],
   ['ENEMY.STEP_SIZE', 2],
   ['ENEMY.STEP_DELAY', 50],

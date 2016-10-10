@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <title>Shroommon</title>
+    <style>
+      * {
+        image-rendering: optimizeSpeed;
+        image-rendering: crisp-edges;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: -o-crisp-edges;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: optimize-contrast;
+        -ms-interpolation-mode: nearest-neighbor;
+      }
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #game {
+        box-shadow: 0 1px 50px 2px rgba(0, 0, 0, 0.1), 0 0 10px 1px rgba(0, 0, 0, 0.25);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+    </style>
+    <!-- game state and configuration -->
+    <script type="text/javascript" src="js/GameState.js"></script>
+    <!-- libs -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fetch/1.0.0/fetch.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/photonstorm/phaser/master/build/phaser.min.js"></script>
+    <script type="text/javascript" src="js/libs/perlin.js"></script>
+    <!-- utilities & other -->
+    <script type="text/javascript" src="js/Utils.js"></script>
+    <script type="text/javascript" src="js/PixelStrings.js"></script>
+    <!-- screens -->
+    <script type="text/javascript" src="js/LoadingScreen.js"></script>
+    <script type="text/javascript" src="js/StartScreen.js"></script>
+    <script type="text/javascript" src="js/GameScreen.js"></script>
+    <script type="text/javascript" src="js/DeathScreen.js"></script>
+    <!-- player and enemy logic -->
+    <script type="text/javascript" src="js/Player.js"></script>
+    <script type="text/javascript" src="js/Enemy.js"></script>
+    <!-- start the game once everythings loaded -->
+    <script type="text/javascript" src="js/Game.js"></script>
+    <script>window.onload = function () { Game.setup(); }</script>
+  </head>
+  <body>
+    <div id="game"></div>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-66853716-5', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </body>
+</html>

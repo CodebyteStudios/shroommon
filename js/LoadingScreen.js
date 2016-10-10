@@ -4,8 +4,8 @@ LoadingScreen.prototype.preload = function () {
   this.game.load.crossOrigin = 'anonymous';
   this.game.load.bitmapFont(
     'pixelated_light',
-    'https://cdn.hyperdev.com/us-east-1%3Aedca1fa4-beaf-4873-bac2-bd5488bd55f1%2Fpixelated_light.png',
-    'https://cdn.hyperdev.com/us-east-1%3Aedca1fa4-beaf-4873-bac2-bd5488bd55f1%2Fpixelated_light.fnt'
+    'assets/pixelated_light.png',
+    'assets/pixelated_light.fnt'
   );
 }
 

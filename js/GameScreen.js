@@ -1,3 +1,5 @@
+/* global Phaser GameState Player Enemy */
+
 function GameScreen () {
   this._player = null;
   this._enemies = [];
@@ -6,9 +8,9 @@ function GameScreen () {
 
 GameScreen.prototype = {
   preload: function () {
-    this.game.load.audio('walk', 'https://cdn.hyperdev.com/us-east-1%3Aedca1fa4-beaf-4873-bac2-bd5488bd55f1%2Fwalk.wav');
-    this.game.load.audio('jump', 'https://cdn.hyperdev.com/us-east-1%3Aedca1fa4-beaf-4873-bac2-bd5488bd55f1%2Fjump.wav');
-    this.game.load.audio('smash', 'https://cdn.hyperdev.com/us-east-1%3Aedca1fa4-beaf-4873-bac2-bd5488bd55f1%2Fsmash.wav');
+    this.game.load.audio('walk', 'assets/walk.wav');
+    this.game.load.audio('jump', 'assets/jump.wav');
+    this.game.load.audio('smash', 'assets/smash.wav');
   },
   create: function () {
   	
@@ -30,19 +32,27 @@ GameScreen.prototype = {
       this._enemies.push(enemy);
   	}
   	
-  	var pauseKey = this.game.input.keyboard.addKey(Phaser.Keyboard.P);
-    pauseKey.onDown.add(function() {
+    this.game.input.keyboard.addKey(Phaser.Keyboard.P).onDown.add(function() {
       this.game.paused = (this.game.paused) ? false : true;
     }, this);
     
-    var muteKey = this.game.input.keyboard.addKey(Phaser.Keyboard.M);
-    muteKey.onDown.add(function() {
-      this.game.sound.mute = (this.game.sound.mute) ? false : true;
+    this.game.input.keyboard.addKey(Phaser.Keyboard.M).onDown.add(function() {
+      Utils.updateMute(this.game, !this.game.sound.mute);
     }, this);
 
     this.score = this.game.add.bitmapText(
-      10, 10, 'pixelated',
-      'SCORE: 0',
+      10,
+      10,
+      'pixelated',
+      'SCORE: ' + GameState.get('SCORE'),
+      GameState.get('SCALE') * 10
+    );
+    
+    this.kills = this.game.add.bitmapText(
+      10,
+      40,
+      'pixelated',
+      'KILLS: ' + GameState.get('KILLS'),
       GameState.get('SCALE') * 10
     );
   },
@@ -82,7 +92,8 @@ GameScreen.prototype = {
       self.game.state.start('Death');
     }
     
-    this.score.text = GameState.get('SCORE');
+    this.score.text = 'SCORE: ' + GameState.get('SCORE');
+    this.kills.text = 'KILLS: ' + GameState.get('KILLS');
   },
   render: function () {
     

@@ -15,7 +15,6 @@ this.Game = {
 		this.game.state.add("Start", StartScreen);
 		this.game.state.add("Game", GameScreen);
 		this.game.state.add("Death", DeathScreen);
-		this.game.state.add("Leaderboard", LeaderboardScreen);
 	},
 	init: function () {
     var gameContainer = document.getElementById('game');
@@ -29,5 +28,6 @@ this.Game = {
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
     this.game.physics.arcade.gravity.y = 300 * GameState.get('SCALE');
     this.game.state.start('Loading');
+    Utils.updateMute(this.game);
  	}
 };
